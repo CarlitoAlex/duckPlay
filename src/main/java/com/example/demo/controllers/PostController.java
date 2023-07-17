@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,7 +37,7 @@ public class PostController {
     }
 
     @GetMapping("/posts/new")
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public String createNewPost(Model model, Principal principal) {
 
         String authUsername = "anonymousUser";
@@ -58,7 +57,7 @@ public class PostController {
     }
 
     @PostMapping("/posts/new")
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public String createNewPost(@ModelAttribute Post post, Principal principal) {
         String authUsername = "anonymousUser";
         if (principal != null) {
@@ -73,7 +72,7 @@ public class PostController {
     }
 
     @GetMapping("/posts/{id}/edit/")
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public String getPostForEdit(@PathVariable Long id, Model model){
         Optional<Post> optionalPost = postService.getById(id);
 
