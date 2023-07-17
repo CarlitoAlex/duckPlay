@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Название игрового новостного сайта</title>
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <h1 class="header__title">Название игрового новостного сайта</h1>
+        <nav class="header__nav">
+            <ul>
+                <li><a th:href="@{'/'}">Home</a></li>
+                <li><a th:href="@{'/register'}">Register</a></li>
+                <li><a th:href="@{'/login'}">Login</a></li>
+                <li><a href="#">Новости</a></li>
+                <li><a href="#">Обзоры</a></li>
+                <li><a href="#">Игры</a></li>
+                <li><a href="#">Релизы</a></li>
+                <li><a href="#">Статьи</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+    <h1>Login</h1>
+    <form action="#" th:action="@{/login}" th:method="POST">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" type="text" name="email" placeholder="Email">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input id="password" type="password" name="password" placeholder="Password">
+        </div>
+
+        <button type="submit">Login</button>
+
+    </form>
+</div>
+
+</body>
