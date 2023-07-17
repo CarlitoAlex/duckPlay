@@ -20,10 +20,10 @@ public class Authority implements Serializable {
     @Column(length = 26)
     private String name;
 
-    @Override
-    public String toString() {
-        return "Authority{" +
-                "name='" + name + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Authority{" +
+//                "name='" + name + '\'' +
+//                '}';
+//    }
 }
