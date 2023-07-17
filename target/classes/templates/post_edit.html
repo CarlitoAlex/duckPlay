@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Название игрового новостного сайта</title>
+</head>
+<body>
+<header class="header">
+  <div class="container">
+    <h1 class="header__title">Название игрового новостного сайта</h1>
+    <nav class="header__nav">
+      <ul>
+        <li><a th:href="@{'/'}">Home</a></li>
+        <li><a th:href="@{'/register'}">Register</a></li>
+        <li><a th:href="@{'/login'}">Login</a></li>
+        <li><a href="#">Новости</a></li>
+        <li><a href="#">Обзоры</a></li>
+        <li><a href="#">Игры</a></li>
+        <li><a href="#">Релизы</a></li>
+        <li><a href="#">Статьи</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <h1>Spring boot app blog</h1>
+  <hr/>
+  <form action="#" th:action="@{'/posts/{id}'(id=${post.id})}"
+        th:object="${post}"
+        th:method="post">
+    <input type="hidden" th:field="*{account}">
+    <input type="hidden" th:field="*{createdAt}">
+    <h2>Write new posts</h2>
+    <div>
+      <label for="new-post-title">Title</label>
+      <input id = "new-post-title" type="text" th:field="*{title}" placeholder="Title">
+    </div>
+    <div>
+      <label for="new-post-body">Body</label>
+      <textarea id = "new-post-body" th:field="*{body}" placeholder="Body"></textarea>
+    </div>
+    <button type="submit">Edit New Post</button>
+  </form>
+</div>
+
+
+</body>
