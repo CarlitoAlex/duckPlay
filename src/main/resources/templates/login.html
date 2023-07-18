@@ -4,26 +4,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Название игрового новостного сайта</title>
+    <title>Duck 2 Play || Login</title>
+    <link rel="stylesheet" type="text/css" href="../webjars/bootstrap/5.3.0/css/bootstrap.min.css" />
+    <script src="../webjars/bootstrap/5.3.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<header class="header">
-    <div class="container">
-        <h1 class="header__title">Название игрового новостного сайта</h1>
-        <nav class="header__nav">
-            <ul>
-                <li><a th:href="@{'/'}">Home</a></li>
-                <li><a th:href="@{'/register'}">Register</a></li>
-                <li><a th:href="@{'/login'}">Login</a></li>
-                <li><a href="#">Новости</a></li>
-                <li><a href="#">Обзоры</a></li>
-                <li><a href="#">Игры</a></li>
-                <li><a href="#">Релизы</a></li>
-                <li><a href="#">Статьи</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+<div th:insert="~{_headerBs :: header}"></div>
 
 <div class="container">
     <h1>Login</h1>
