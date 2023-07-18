@@ -5,7 +5,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -34,7 +36,11 @@ public class WebSecurityConfig {
         http.authorizeHttpRequests()
                 .requestMatchers(WHITE_LIST).permitAll()
                 .requestMatchers(antMatcher("/h2-console/**")).permitAll()
-                .requestMatchers(HttpMethod.GET, "/posts/*").permitAll()
+                .requestMatchers(HttpMethod.GET, "/posts/**").permitAll()
+                .requestMatchers(antMatcher("/webjars/**")).permitAll()
+//                .requestMatchers(antMatcher("/css/**")).permitAll()
+//                .requestMatchers(antMatcher("/js/**")).permitAll()
+//                .requestMatchers(antMatcher( "/posts/**/webjars/**")).permitAll()
                 .anyRequest().authenticated();
 
         http.csrf().disable();
@@ -59,4 +65,5 @@ public class WebSecurityConfig {
 
         return http.build();
     }
+
 }
