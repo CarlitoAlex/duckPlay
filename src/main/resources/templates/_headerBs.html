@@ -19,8 +19,6 @@
             </a>
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
               <li><a th:href="@{'/'}" class="nav-link px-2 text-secondary">Home</a></li>
-              <li sec:authorize="!isAuthenticated()"><a th:href="@{'/register'}" class="nav-link px-2 text-white">Register</a></li>
-              <li sec:authorize="!isAuthenticated()"><a th:href="@{'/login'}" class="nav-link px-2 text-white">Login</a></li>
               <li><a th:href="@{'/posts/new'}" class="nav-link px-2 text-white">Create new Post</a></li>
               <li><a th:href="@{'/'}" class="nav-link px-2 text-white">PS 5</a></li>
               <li><a th:href="@{'/'}" class="nav-link px-2 text-white">PC</a></li>
@@ -30,14 +28,14 @@
                 <form action="#" class="navbar-form" th:action="@{/logout}" th:method="POST">
                     <div>
                         <label>Hi, <span sec:authentication="name">UserName</span></label>
+                        <button type="submit" class="btn btn-warning" >Log Out</button>
                     </div>
-                    <button type="submit">Log Out</button>
                 </form>
             </div>
 
-            <div class="text-end">
-                <button type="button" class="btn btn-outline-light me-2">Login</button>
-                <button type="button" class="btn btn-warning">Sign-up</button>
+            <div sec:authorize ="!isAuthenticated()">
+                <button type="button" class="btn btn-outline-light me-2"><a th:href="@{'/login'}" class="nav-link px-2 text-white">Login</a></button>
+                <button type="button" class="btn btn-warning"><a th:href="@{'/register'}" class="nav-link px-2 text-dark-emphasis">Sign-up</a></button>
             </div>
         </div>
     </div>

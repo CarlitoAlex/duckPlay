@@ -38,9 +38,7 @@ public class WebSecurityConfig {
                 .requestMatchers(antMatcher("/h2-console/**")).permitAll()
                 .requestMatchers(HttpMethod.GET, "/posts/**").permitAll()
                 .requestMatchers(antMatcher("/webjars/**")).permitAll()
-//                .requestMatchers(antMatcher("/css/**")).permitAll()
-//                .requestMatchers(antMatcher("/js/**")).permitAll()
-//                .requestMatchers(antMatcher( "/posts/**/webjars/**")).permitAll()
+                .requestMatchers(antMatcher("/static/**")).permitAll()
                 .anyRequest().authenticated();
 
         http.csrf().disable();
