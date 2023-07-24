@@ -1,0 +1,15 @@
+p {
+    color: ghostwhite;
+}
+
+.card-title {
+    color: ghostwhite;
+}
+
+h2 {
+    color: ghostwhite;
+}
+
+:root {
+    --bs-body-bg: #413f3b;
+}
