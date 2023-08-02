@@ -29,4 +29,8 @@ public class AccountService {
     public Optional<Account> findByEmail(String email){
         return accountRepository.findOneByEmail(email);
     }
+
+    public Account updateAnswers(Account account){
+        return accountRepository.save(account);
+    }
 }

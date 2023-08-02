@@ -15,10 +15,10 @@
 
 <div class="container mt-5">
     <h2 class="text-center mb-4">Последние новости</h2>
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card mb-4" th:each="post : ${posts}">
-                <img src="" class="card-img-top" alt="Новость 1">
+                <img src="https://gmedia.playstation.com/is/image/SIEPDC/god-of-war-pc-screenshot-03-en-12oct21?$native$" class="card-img-top" alt="Новость 1">
                 <div class="card-body">
                     <h5 class="card-title" th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}">Заголовок новости 1</h5>
                     <p class="card-text" th:text="${post.body}">Desc</p>

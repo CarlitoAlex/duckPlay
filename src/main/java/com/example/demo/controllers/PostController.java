@@ -63,10 +63,16 @@ public class PostController {
         if (principal != null) {
             authUsername = principal.getName();
         }
-        if (post.getAccount().getEmail().compareToIgnoreCase(authUsername) < 0) {
-            // TODO: some kind of error?
-            // our account email on the Post not equal to current logged in account!
+
+        try {
+            if (post.getAccount().getEmail().compareToIgnoreCase(authUsername) < 0) {
+                // TODO: some kind of error?
+                // our account email on the Post not equal to current logged in account!
+            }
+        }catch (Exception ignored){
+
         }
+
         postService.save(post);
         return "redirect:/posts/" + post.getId();
     }

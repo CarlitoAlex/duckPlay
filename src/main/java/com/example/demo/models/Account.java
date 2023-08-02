@@ -38,6 +38,10 @@ public class Account {
     @OneToMany(mappedBy = "account")
     private List<Post> posts;
 
+    private int correctAnswers;
+
+    private int tryCountQuiz;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "account_authority"
             , joinColumns = {@JoinColumn(name = "account_id",referencedColumnName = "id")}
