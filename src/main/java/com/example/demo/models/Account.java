@@ -42,6 +42,9 @@ public class Account {
 
     private int tryCountQuiz;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private QuizSession quizSession;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "account_authority"
             , joinColumns = {@JoinColumn(name = "account_id",referencedColumnName = "id")}

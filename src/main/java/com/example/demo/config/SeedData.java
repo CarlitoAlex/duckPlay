@@ -1,9 +1,6 @@
 package com.example.demo.config;
 
-import com.example.demo.models.Account;
-import com.example.demo.models.Authority;
-import com.example.demo.models.Post;
-import com.example.demo.models.Quiz;
+import com.example.demo.models.*;
 import com.example.demo.repository.AuthorityRepository;
 import com.example.demo.repository.QuizRepository;
 import com.example.demo.services.AccountService;

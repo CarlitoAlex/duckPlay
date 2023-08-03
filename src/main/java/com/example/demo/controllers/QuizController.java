@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 import com.example.demo.models.Account;
 import com.example.demo.models.Quiz;
+import com.example.demo.models.QuizSession;
 import com.example.demo.services.AccountService;
 import com.example.demo.services.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -31,7 +33,7 @@ public class QuizController {
     public String getAllQuiz(Model model) {
         Account account = getCurrentSession();
         int tryCurrentQuiz = account.getTryCountQuiz();
-        if (tryCurrentQuiz >= 5){
+        if (tryCurrentQuiz > 5){
             return "quizPause";
         }
 
@@ -59,14 +61,24 @@ public class QuizController {
     @PostMapping("/checkAnswerForQuiz")
     public String checkAnswer(@ModelAttribute Quiz quiz) {
         Account account = getCurrentSession();
-
         String answer = quiz.getAnswer();
+        QuizSession quizSession = account.getQuizSession();
+
+        if (account.getQuizSession() == null){
+            quizSession = new QuizSession();
+            quizSession.setStartTime(LocalDateTime.now());
+            account.setQuizSession(quizSession);
+            accountService.updateAnswers(account);
+        }
 
         String answerChoice = quiz.getAnswerChoice().replaceAll(",", "");
         int currentCount = account.getCorrectAnswers();
         int tryCurrentQuiz = account.getTryCountQuiz();
 
         if (tryCurrentQuiz >= 5){
+            quizSession.setEndTime(LocalDateTime.now());
+            account.setQuizSession(quizSession);
+            accountService.updateAnswers(account);
             return "quizPause";
         }
 

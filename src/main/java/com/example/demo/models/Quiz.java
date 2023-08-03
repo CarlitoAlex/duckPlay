@@ -25,5 +25,4 @@ public class Quiz {
     private String answer;
     private String answerChoice = null;
     private boolean correct = false;
-
 }
