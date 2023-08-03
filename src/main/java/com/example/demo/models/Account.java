@@ -42,7 +42,7 @@ public class Account {
 
     private int tryCountQuiz;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL , orphanRemoval = true)
     private QuizSession quizSession;
 
     @ManyToMany(fetch = FetchType.EAGER)
