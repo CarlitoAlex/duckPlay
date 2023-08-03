@@ -33,7 +33,7 @@ public class QuizController {
     public String getAllQuiz(Model model) {
         Account account = getCurrentSession();
         int tryCurrentQuiz = account.getTryCountQuiz();
-        if (tryCurrentQuiz > 5){
+        if (tryCurrentQuiz > 20){
             return "quizPause";
         }
 
@@ -75,7 +75,7 @@ public class QuizController {
         int currentCount = account.getCorrectAnswers();
         int tryCurrentQuiz = account.getTryCountQuiz();
 
-        if (tryCurrentQuiz >= 5){
+        if (tryCurrentQuiz >= 20){
             quizSession.setEndTime(LocalDateTime.now());
             account.setQuizSession(quizSession);
             accountService.updateAnswers(account);
