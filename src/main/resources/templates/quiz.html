@@ -9,7 +9,21 @@
     <script src="../webjars/bootstrap/5.3.0/js/bootstrap.min.js"></script>
     <link href="../static/css/home.css" th:href="@{/css/home.css}" rel="stylesheet" />
 </head>
+<style>
+    .btn-group label,
+    .btn-group input {
+        border-radius: 15px; /* Можете настроить радиус округления по вашему усмотрению */
+    }
 
+    /* Опционально: добавляем небольшую внутреннюю отступку для label, чтобы улучшить визуальный вид */
+    .btn-group label {
+        padding: 8px 16px; /* Можете настроить отступ по вашему усмотрению */
+    }
+    .card-img-top {
+        max-width: 1920px;
+        max-height: 1080px;
+    }
+</style>
 <body>
 <div th:insert="~{_headerBs :: header}"></div>
 
@@ -18,9 +32,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card mb-4">
-                <img src="https://gmedia.playstation.com/is/image/SIEPDC/god-of-war-pc-screenshot-03-en-12oct21?$native$" class="card-img-top" alt="Новость 1">
+                <img th:action="@{'/getQuiz'}" th:object="${quiz}" th:method="GET"  th:src="${quiz.imageUrl}" class="card-img-top" alt="Новость 1">
                 <div class="card-body">
-                    <h5 class="card-title" th:action="@{'/getQuiz'}" th:object="${quiz}" th:method="GET" th:text="${quiz.title}">Question</h5>
+                    <h5 class="card-title" th:text="${quiz.title}">Question</h5>
                     <form th:action="@{/checkAnswerForQuiz}" th:method="POST">
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <input type="hidden" th:field="*{quiz.id}">
@@ -32,16 +46,14 @@
                         <label class="btn btn-secondary"><input type="radio" name="answerChoice" th:value="${quiz.getOptions().get(1)}" th:text="${quiz.getOptions().get(1)}"></label>
                         <label class="btn btn-secondary"><input type="radio" name="answerChoice" th:value="${quiz.getOptions().get(2)}" th:text="${quiz.getOptions().get(2)}"></label>
                         <label class="btn btn-secondary"><input type="radio" name="answerChoice" th:value="${quiz.getOptions().get(3)}" th:text="${quiz.getOptions().get(3)}"></label>
-                    </div>
-                    <p class="card-text" th:text="${quiz.answer}">Answer</p>
                         <button type="submit" class="btn btn-warning">Answer</button>
+                    </div>
+
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
 
 </body>

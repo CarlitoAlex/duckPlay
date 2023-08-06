@@ -19,19 +19,19 @@
         <div class="mb-3 mt-3">
             <label for="email" class="form-label">Email</label>
             <input id="email" type="text" placeholder="Email" th:field="*{email}" class="form-control">
-            <p style="color:darkred" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error</p>
+            <p style="color:#ff4444" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error</p>
         </div>
 
         <div class="mb-3 mt-3">
             <label for="password" class="form-label">Password</label>
             <input id="password" type="password" placeholder="Password" th:field="*{password}" class="form-control">
-            <p style="color:darkred" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password error</p>
+            <p style="color:#ff4444" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password error</p>
         </div>
 
         <div class="mb-3 mt-3">
             <label for="username" class="form-label">UserName</label>
             <input id="username" type="text" placeholder="Username" th:field="*{username}" class="form-control">
-            <p style="color:darkred" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">UserName error</p>
+            <p style="color:#ff4444" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">UserName error</p>
         </div>
 
         <button type="submit" class="btn btn-warning">Register</button>
