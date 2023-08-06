@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import com.example.demo.models.Account;
+import com.example.demo.models.Post;
 import com.example.demo.models.Quiz;
 import com.example.demo.models.QuizSession;
 import com.example.demo.services.AccountService;

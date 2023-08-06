@@ -2,6 +2,10 @@ h1,h2, p, label, .card-title {
     color: ghostwhite;
 }
 
+.text-white {
+    color: ghostwhite;
+}
+
 :root {
     --bs-body-bg: #212529;
 }

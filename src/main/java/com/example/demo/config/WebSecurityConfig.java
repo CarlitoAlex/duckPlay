@@ -37,6 +37,7 @@ public class WebSecurityConfig {
                 .requestMatchers(WHITE_LIST).permitAll()
                 .requestMatchers(antMatcher("/h2-console/**")).permitAll()
                 .requestMatchers(HttpMethod.GET, "/posts/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/getAccountForQuizTable").permitAll()
                 .requestMatchers(antMatcher("/webjars/**")).permitAll()
                 .requestMatchers(antMatcher("/static/css/**")).permitAll()
                 .requestMatchers(antMatcher("/css/**")).permitAll()

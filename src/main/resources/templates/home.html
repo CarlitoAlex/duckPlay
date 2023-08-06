@@ -26,6 +26,24 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-4">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="text-white">Пользователь</th>
+                    <th class="text-white">Очки</th>
+                    <th class="text-white">Кол-во попыток</th>
+                </tr>
+                </thead>
+                <tbody th:action="@{'/getAccountForQuizTable'}" th:method="GET" th:object="${account}">
+                <tr th:each="account : ${account}">
+                    <td class="text-white" th:text="${account.email}"></td>
+                    <td class="text-white" th:text="${account.correctAnswers}"></td>
+                    <td class="text-white" th:text="${account.tryCountQuiz}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
