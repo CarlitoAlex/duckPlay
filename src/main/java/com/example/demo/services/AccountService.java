@@ -35,6 +35,10 @@ public class AccountService {
         return accountRepository.findAll();
     }
 
+    public List<Account> getAllAccountSortedByPoints(){
+        return accountRepository.findTop10ByOrderByCorrectAnswersDesc();
+    }
+
     public Account updateAnswers(Account account){
         return accountRepository.save(account);
     }

@@ -21,6 +21,8 @@
                 <li><a th:href="@{'/'}" class="nav-link px-2 text-secondary">Home</a></li>
                 <li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{'/posts/new'}" class="nav-link px-2 text-white">Create
                     new Post</a></li>
+                <li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{'/quiz/new'}" class="nav-link px-2 text-white">Create
+                    new Quiz</a></li>
                 <li><a th:href="@{'/'}" class="nav-link px-2 text-white">PS 5</a></li>
                 <li><a th:href="@{'/getQuiz'}" class="nav-link px-2 text-white">Quiz</a></li>
                 <li><a th:href="@{'/'}" class="nav-link px-2 text-white">PC</a></li>

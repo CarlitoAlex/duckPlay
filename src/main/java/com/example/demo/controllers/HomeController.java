@@ -24,16 +24,8 @@ public class HomeController {
     @GetMapping("/")
     public String home(Model model){
         List<Post> posts = postService.getAll();
-        List<Account> account = accountService.getAllAccount();
+        List<Account> account = accountService.getAllAccountSortedByPoints();
         model.addAttribute("posts", posts);
-        model.addAttribute("account",account);
-        return "home";
-    }
-
-    @GetMapping("/asdasd")
-    public String getAllUsersWithQuiz(Model model){
-        List<Account> account = accountService.getAllAccount();
-        System.out.println("Getting list with " + account.get(0).getEmail() + " and " + account.get(1).getEmail());
         model.addAttribute("account",account);
         return "home";
     }

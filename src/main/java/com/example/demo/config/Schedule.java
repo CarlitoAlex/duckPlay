@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Configuration
-@EnableScheduling
+//@EnableScheduling
 public class Schedule {
     @Autowired
     private AccountService accountService;

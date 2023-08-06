@@ -7,17 +7,14 @@
     <title>Duck 2 Play || Posts</title>
     <link rel="stylesheet" type="text/css" href="../webjars/bootstrap/5.3.0/css/bootstrap.min.css" />
     <script src="../webjars/bootstrap/5.3.0/js/bootstrap.min.js"></script>
-    <style>
-        :root{
-            --bs-body-bg: #413f3b;
-        }
-    </style>
+    <link href="../static/css/home.css" th:href="@{/css/home.css}" rel="stylesheet" />
+
 </head>
 <body>
 <div th:insert="~{_headerBs :: header}"></div>
 
 <div class="container">
-    <h2><a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}">Title</a></h2>
+    <h2 th:text="${post.title}">>Title</h2>
     <h5 th:text="'Author ' + ${post.account.username}">Author</h5>
     <h5 th:text="'Published on ' + ${post.createdAt}">Created At</h5>
     <p th:text="${post.body}">body text</p>
@@ -28,4 +25,4 @@
 </ul>
 
 
-</body>
+</body></html>
