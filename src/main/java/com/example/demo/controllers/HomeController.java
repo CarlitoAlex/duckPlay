@@ -1,6 +1,8 @@
 package com.example.demo.controllers;
 
+import com.example.demo.models.Account;
 import com.example.demo.models.Post;
+import com.example.demo.services.AccountService;
 import com.example.demo.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,10 +18,15 @@ public class HomeController {
     @Autowired
     private PostService postService;
 
+    @Autowired
+    private AccountService accountService;
+
     @GetMapping("/")
     public String home(Model model){
         List<Post> posts = postService.getAll();
+        List<Account> account = accountService.getAllAccountSortedByPoints();
         model.addAttribute("posts", posts);
+        model.addAttribute("account",account);
         return "home";
     }
 

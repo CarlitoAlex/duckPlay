@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Duck 2 Play || New</title>
+    <link rel="stylesheet" type="text/css" href="../webjars/bootstrap/5.3.0/css/bootstrap.min.css"/>
+    <script src="../webjars/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+    <link href="../static/css/home.css" th:href="@{/css/home.css}" rel="stylesheet"/>
+</head>
+<body>
+<div th:insert="~{_headerBs :: header}"></div>
+
+<div class="container">
+    <h1>Spring boot app blog</h1>
+    <hr/>
+    <form action="#" th:action="@{/quiz/new}"
+          th:object="${quiz}"
+          th:method="POST">
+        <h2>Write new Quiz</h2>
+        <div>
+            <label for="new-quiz-title">Title</label>
+            <input id="new-quiz-title" type="text" th:field="*{title}" placeholder="Title" class="form-control">
+
+            <label for="new-quiz-answer">Answer</label>
+            <input id="new-quiz-answer" type="text" th:field="*{answer}" placeholder="Answer" class="form-control">
+
+            <label for="new-quiz-imageUrl">Url</label>
+            <input id="new-quiz-imageUrl" type="text" th:field="*{imageUrl}" placeholder="Url" class="form-control">
+        </div>
+
+        <div>
+            <label>Значение 1:</label>
+            <input type="text" th:field="*{options[0]}" class="form-control"><br>
+            <label>Значение 2:</label>
+            <input type="text" th:field="*{options[1]}" class="form-control"><br>
+            <label>Значение 3:</label>
+            <input type="text" th:field="*{options[2]}" class="form-control"><br>
+            <label>Значение 4:</label>
+            <input type="text" th:field="*{options[3]}" class="form-control"><br>
+        </div>
+
+        <button type="submit" class="btn btn-warning">Publish new Quiz</button>
+    </form>
+</div>
+
+
+</body>
+</html>

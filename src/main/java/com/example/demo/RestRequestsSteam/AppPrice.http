@@ -1,0 +1,4 @@
+GET https://store.steampowered.com/api/appdetails?appids=1086940
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip

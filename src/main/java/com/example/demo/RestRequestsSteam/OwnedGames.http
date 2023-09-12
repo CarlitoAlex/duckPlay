@@ -1,0 +1,4 @@
+GET http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=C870F12389E585D6125C7E0CDCAF045E&steamid=76561199066431959&format=json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip

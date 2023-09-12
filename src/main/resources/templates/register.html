@@ -7,6 +7,7 @@
     <title>Duck 2 Play || Register</title>
     <link rel="stylesheet" type="text/css" href="../webjars/bootstrap/5.3.0/css/bootstrap.min.css" />
     <script src="../webjars/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+    <link href="../static/css/home.css" th:href="@{/css/home.css}" rel="stylesheet" />
 </head>
 <body>
 <div th:insert="~{_headerBs :: header}"></div>
@@ -15,19 +16,25 @@
     <h1>Register</h1>
 
     <form action="#" th:action="@{register}" th:object="${account}" th:method="POST">
-        <div><label for="email">Email</label>
-            <input id="email" type="text" placeholder="Email" th:field="*{email}">
+        <div class="mb-3 mt-3">
+            <label for="email" class="form-label">Email</label>
+            <input id="email" type="text" placeholder="Email" th:field="*{email}" class="form-control">
+            <p style="color:#ff4444" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error</p>
         </div>
 
-        <div><label for="password">Password</label>
-            <input id="password" type="password" placeholder="Password" th:field="*{password}">
+        <div class="mb-3 mt-3">
+            <label for="password" class="form-label">Password</label>
+            <input id="password" type="password" placeholder="Password" th:field="*{password}" class="form-control">
+            <p style="color:#ff4444" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password error</p>
         </div>
 
-        <div><label for="username">UserName</label>
-            <input id="username" type="text" placeholder="Username" th:field="*{username}">
+        <div class="mb-3 mt-3">
+            <label for="username" class="form-label">UserName</label>
+            <input id="username" type="text" placeholder="Username" th:field="*{username}" class="form-control">
+            <p style="color:#ff4444" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">UserName error</p>
         </div>
 
-        <button type="submit">Register</button>
+        <button type="submit" class="btn btn-warning">Register</button>
     </form>
 </div>
 

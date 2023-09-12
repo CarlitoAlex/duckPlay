@@ -7,24 +7,50 @@
     <title>Duck 2 Play || Home</title>
     <link rel="stylesheet" type="text/css" href="../webjars/bootstrap/5.3.0/css/bootstrap.min.css" />
     <script src="../webjars/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+    <link href="../static/css/home.css" th:href="@{/css/home.css}" rel="stylesheet" />
 </head>
+<style>
+
+</style>
 <body>
 <div th:insert="~{_headerBs :: header}"></div>
 
-<div class="container">
-    <h1>Spring boot app blog</h1>
-    <hr/>
-    <div class="posts-container">
-        <div class="post" th:each="post : ${posts}">
-            <h2>
-                <a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}">Title</a>
-            </h2>
-            <h5 th:text="'Author ' + ${post.account.username}">Author</h5>
-            <h5 th:text="'Published on ' + ${post.createdAt}">Created At</h5>
-            <p th:text="${post.body}">body text</p>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Последние новости</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card mb-4" th:each="post : ${posts}">
+                <img src="https://gmedia.playstation.com/is/image/SIEPDC/god-of-war-pc-screenshot-03-en-12oct21?$native$" class="card-img-top" alt="Новость 1">
+                <div class="card-body">
+                    <h5 class="card-title" th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}">Заголовок новости 1</h5>
+                    <p class="card-text" th:text="${post.body}">Desc</p>
+                    <a th:href="@{'/posts/' + ${post.id}}" class="btn btn-warning">More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 d-inline-block">
+            <div class="yellow-border rounded">
+                <table class="table m-0 p-0">
+                    <thead>
+                    <tr>
+                        <th class="text-white">Пользователь</th>
+                        <th class="text-white">Очки</th>
+                        <th class="text-white">Кол-во попыток</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="account : ${account}">
+                        <td class="text-white" th:text="${account.email}"></td>
+                        <td class="text-white" th:text="${account.correctAnswers}"></td>
+                        <td class="text-white" th:text="${account.tryCountQuiz}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
+
 
 
 </body>

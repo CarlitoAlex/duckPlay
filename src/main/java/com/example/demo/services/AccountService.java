@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -28,5 +29,17 @@ public class AccountService {
 
     public Optional<Account> findByEmail(String email){
         return accountRepository.findOneByEmail(email);
+    }
+
+    public List<Account> getAllAccount(){
+        return accountRepository.findAll();
+    }
+
+    public List<Account> getAllAccountSortedByPoints(){
+        return accountRepository.findTop10ByOrderByCorrectAnswersDesc();
+    }
+
+    public Account updateAnswers(Account account){
+        return accountRepository.save(account);
     }
 }
