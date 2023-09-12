@@ -1,5 +1,6 @@
 package com.example.demo.config;
 
+import com.example.demo.controllers.SteamController;
 import com.example.demo.models.Account;
 import com.example.demo.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,33 +8,44 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
+import java.net.URISyntaxException;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 @Configuration
-//@EnableScheduling
+@EnableScheduling
 public class Schedule {
     @Autowired
     private AccountService accountService;
 
-    @Scheduled(cron = "0 */2 * ? * *")
-    public void scheduleFixedDelayTask() {
-        System.out.println("Разница между endtime and star time" + check5MinutesDiffToClear());
-        System.out.println("Разница между endtime and current time" + check5MinutesDiffToClearWholeTime());
-        System.out.println(check5MinutesDiffToClearWholeTime());
-        Optional<Account> accountOptional = accountService.findByEmail(getAllUserToClearQuiz().get(0).getEmail());
-        if (accountOptional.isPresent() && check5MinutesDiffToClearWholeTime() > 3 || accountOptional.isPresent() && check5MinutesDiffToClear() > 3 ){
-            Account account = accountOptional.get();
-            account.setQuizSession(null);
-            account.setTryCountQuiz(0);
-            accountService.save(account);
-            System.out.println("Clear account session quiz");
-        }else {
-            System.out.println("Nothing to clear");
-        }
-    }
+//    @Scheduled(cron = "0 */2 * ? * *")
+//    public void scheduleFixedDelayTask() {
+//        System.out.println("Разница между endtime and star time" + check5MinutesDiffToClear());
+//        System.out.println("Разница между endtime and current time" + check5MinutesDiffToClearWholeTime());
+//        System.out.println(check5MinutesDiffToClearWholeTime());
+//        Optional<Account> accountOptional = accountService.findByEmail(getAllUserToClearQuiz().get(0).getEmail());
+//        if (accountOptional.isPresent() && check5MinutesDiffToClearWholeTime() > 3 || accountOptional.isPresent() && check5MinutesDiffToClear() > 3 ){
+//            Account account = accountOptional.get();
+//            account.setQuizSession(null);
+//            account.setTryCountQuiz(0);
+//            accountService.save(account);
+//            System.out.println("Clear account session quiz");
+//        }else {
+//            System.out.println("Nothing to clear");
+//        }
+//    }
+
+
+//    @Scheduled(cron = "0 */2 * ? * *")
+//    public void checkSteam() throws URISyntaxException {
+//        SteamController steamController = new SteamController();
+//
+//        steamController.getOwnersGames();
+//    }
+
+
 
     private List<Account> getAllUserToClearQuiz(){
         return accountService.getAllAccount();

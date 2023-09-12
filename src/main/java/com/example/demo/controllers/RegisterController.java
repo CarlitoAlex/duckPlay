@@ -25,10 +25,20 @@ public class RegisterController {
 
     @PostMapping("/register")
     public String registerNewUser(@ModelAttribute @Valid Account account, BindingResult bindingResult){
+        Account account1;
+
         if (bindingResult.hasErrors()){
             return "register";
         }
-        accountService.save(account);
-        return "redirect:/";
+
+        if (accountService.findByEmail(account.getEmail()).isPresent()){
+            account1 = accountService.findByEmail(account.getEmail()).get();
+            System.out.println("We are find account in system " + account1.getEmail());
+            return "register";
+        }else {
+            System.out.println("Creating new account");
+            accountService.save(account);
+            return "redirect:/";
+        }
     }
 }
